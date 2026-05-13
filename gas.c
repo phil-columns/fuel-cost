@@ -1,42 +1,40 @@
 // fuel cost calculator
 
 #include <stdio.h>
-#include <stdbool.h>
 
-bool carCheck(char carprompt){
 
-    if(carprompt == 'y'){
-	return true; 	    
-    }
-    else if(carprompt == 'n'){
-	return false;
-    }
-}
+    float distance = 0;
+    float gasprice = 0.0;
+    int car = 0;
+    float total = 0; 
+    const float ToyotaMileage = 18;
+    const float SubaruMileage = 21;
 
 int main() {
 
-    int distance = 0;
-    float gasprice = 0.0;
-    char carprompt = 0;
-    float total = 0; 
-
     printf("Fuel Cost Calculator\n");
-    printf("how far are you driving?: ");
-    scanf("%d", &distance);
-    printf("how much is gas?: ");
+    printf("how many miles are you driving?: ");
+    scanf("%f", &distance);
+    printf("Enter gas price (per gallon): ");
     scanf("%f", &gasprice);
 
-    total = distance * gasprice * .05;
+    printf("What kind of car are you driving? (enter number):\n");
+    printf("1: 2022 Toyota Tacoma\n");
+    printf("2: 2009 Subaru Outback\n");
+    printf("Your Selection: ");
+    scanf("%d", &car);     
 
-    printf("Are you driving a 2022 Toyota Tacoma? (y or n): ");
-    scanf("%s", &carprompt);
-       
-        if(carCheck(carprompt)) {
-	    printf("your trip will cost %.2f dollars.\n", total);
-        }
-	else {
-	    printf("Sorry, your car is not supported");
-	}
+    if(car == 1){
+	float total = ((distance / ToyotaMileage) * gasprice); 
+       	printf("Your trip will cost $%.2f\n", total);
+    }
+    else if(car == 2){
+	float total = ((distance / SubaruMileage) * gasprice);
+	printf("Your trip will cost $%.2f\n", total);
+    }
+    else{
+	printf("Error: Invalid input\n");
+    }
 
 return 0;
 
