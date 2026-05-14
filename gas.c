@@ -2,19 +2,20 @@
 
 #include <stdio.h>
 
-
     float distance = 0;
     float gasprice = 0.0;
     int car = 0;
     float total = 0; 
     const float ToyotaMileage = 18;
     const float SubaruMileage = 21;
+    float UserMileage = 0;
 
 int main() {
 
     printf("Fuel Cost Calculator\n");
     printf("how many miles are you driving?: ");
     scanf("%f", &distance);
+  
     printf("Enter gas price (per gallon): ");
     scanf("%f", &gasprice);
 
@@ -25,16 +26,17 @@ int main() {
     scanf("%d", &car);     
 
     if(car == 1){
-	float total = ((distance / ToyotaMileage) * gasprice); 
-       	printf("Your trip will cost $%.2f\n", total);
+	UserMileage = ToyotaMileage;
     }
     else if(car == 2){
-	float total = ((distance / SubaruMileage) * gasprice);
-	printf("Your trip will cost $%.2f\n", total);
+	 UserMileage = SubaruMileage;
     }
     else{
 	printf("Error: Invalid input\n");
     }
+
+    total = ((distance / UserMileage) * gasprice);
+    printf("Your trip will cost $%.2f\n", total);
 
 return 0;
 
